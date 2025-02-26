@@ -1,6 +1,7 @@
 
 # Travel Anchors
 ### Minecraft 1.21.1, NeoForge 21.1.122
+#### Also required [LibX](https://www.curseforge.com/minecraft/mc-mods/libx) 6.0.3+
 
 Port of [Travel Anchors](https://www.curseforge.com/minecraft/mc-mods/travel-anchors) to newer minecraft version.
 
