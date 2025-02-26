@@ -3,24 +3,24 @@
 
   "item.travelanchors.travel_staff": "Посох путешествия",
 
+  "block.travelanchors.travel_anchor": "Якорь путешествия",
+
   "enchantment.travelanchors.teleportation_range": "Радиус Телепортации",
   "enchantment.travelanchors.teleportation_range.desc": "Увеличивает дальность телепортации с каждым уровнем",
-
-  "block.travelanchors.travel_anchor": "Якорь путешествия",
 
   "screen.travelanchors.travel_anchor": "Якорь путешествия",
   "screen.travelanchors.search": "Найти",
   "screen.travelanchors.nameless": "Чтобы использовать это, дайте ему название",
 
-  "tooltip.travelanchors.travel_anchor_block": "Чтобы телепортироваться на него, наведите Посох Путешествия или инструмент с зачарованием Телепортация.",
-  "tooltip.travelanchors.travel_staff": "Shift + ПКМ для телепортации на короткое расстояние. Наведитесь на якорь путешествия чтобы телепортироваться на него.",
+  "tooltip.travelanchors.travel_anchor_block": "Чтобы телепортироваться, наведитесь на него, пока стоите на другом якоре или держите в руках Посох Путешествия",
+  "tooltip.travelanchors.travel_staff": "Shift + ПКМ для телепортации на короткое расстояние. Наведитесь на якорь путешествия чтобы телепортироваться на него",
 
-  "travelanchors.tp.success": "Телепортировано на %s.",
-  "travelanchors.tp.fail": "Якорь путешествия не найден.",
-  "travelanchors.hop.fail": "Доступ к цели затруднен.",
+  "travelanchors.tp.success": "Телепортировано на %s",
+  "travelanchors.tp.fail": "Якорь путешествия не найден",
+  "travelanchors.hop.fail": "Доступ к цели затруднен",
   
   "travelanchors.lock.button": "Заблокировать",
-  "travelanchors.lock.locked": "Этот якорь теперь заблокирован.",
-  "travelanchors.lock.unlocked": "Этот якорь больше не заблокирован.",
-  "travelanchors.lock.interact": "Этот якорь заблокирован. Нажмите ПКМ с шифтом, чтобы разблокировать."
+  "travelanchors.lock.locked": "Этот якорь теперь заблокирован",
+  "travelanchors.lock.unlocked": "Этот якорь больше не заблокирован",
+  "travelanchors.lock.interact": "Этот якорь заблокирован. Нажмите ПКМ с шифтом, чтобы разблокировать"
 }
