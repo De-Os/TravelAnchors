@@ -141,7 +141,7 @@ public class TravelAnchorRenderer {
     @OnlyIn(Dist.CLIENT)
     public static void renderAnchor(PoseStack poseStack, MultiBufferSource buffer, @Nullable String name, BlockState state, int light, boolean glow, boolean active, double distanceSq, @Nullable ModelData modelData) {
 
-        if(state == null || state.getBlock() == ModBlocks.travelAnchor){
+        if (state == null || state.getBlock() == ModBlocks.travelAnchor) {
             Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(
                     poseStack.last(),
                     buffer.getBuffer(RenderType.solid()),
@@ -155,7 +155,7 @@ public class TravelAnchorRenderer {
                     modelData == null ? ModelData.EMPTY : modelData,
                     RenderType.SOLID
             );
-        }else{
+        } else {
             Minecraft.getInstance().getBlockRenderer().renderSingleBlock(
                     state,
                     poseStack,
@@ -166,7 +166,6 @@ public class TravelAnchorRenderer {
                     RenderType.SOLID
             );
         }
-
 
 
         if (glow) {
