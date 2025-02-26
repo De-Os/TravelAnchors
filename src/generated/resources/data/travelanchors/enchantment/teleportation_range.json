@@ -1,0 +1,18 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.travelanchors.teleportation_range"
+  },
+  "max_cost": {
+    "base": 75,
+    "per_level_above_first": 25
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 25,
+    "per_level_above_first": 25
+  },
+  "slots": [],
+  "supported_items": "#travelanchors:teleportation_range_applicable",
+  "weight": 1
+}
