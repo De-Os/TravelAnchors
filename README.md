@@ -1,25 +1,37 @@
 
-Installation information
-=======
+# Travel Anchors
+### Minecraft 1.21.1, NeoForge 21.1.122
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+Port of [Travel Anchors](https://www.curseforge.com/minecraft/mc-mods/travel-anchors) to newer minecraft version.
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+## Feautres
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+### Travel Anchor Block
+Craft -> place -> give it a name -> lock -> use!
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+Actions:
+* Right-click with empty hand: opens GUI with name change and lock button
+* Shift+Right-click with empty hand: unlocks
+* Right-click with block: set block's texture for anchor
+* When standing on anchor, explore nearby anchors and teleport on them by just right-click. Jump and shift also supported for elevator purposes
 
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+### Travel Staff
+Craft -> enchant? -> use!
+
+Actions:
+* Explore travel anchors when held and use right-click to teleport
+* Use with shift to teleport on short distances
+
+### Teleportation Range enchantment
+
+New enchantment, only for Travel Staff. Increases range for travel anchors visibility
+
+## Known issues
+* Lightning
+* Ability to set non-full blocks as texture for anchor
+* ??? Feel free to report!
+
+## Credits
+
+* Thanks to all contributors of [Travel Anchors](https://github.com/castcrafter/travel_anchors) for creating standalone mod with features from [EnderIO](https://github.com/Team-EnderIO/EnderIO)
+* Thanks to [McJty](https://github.com/mcjtymods) for his [tutorial about NeoForge](https://www.mcjty.eu/docs/1.20.4_neo/ep1) 
