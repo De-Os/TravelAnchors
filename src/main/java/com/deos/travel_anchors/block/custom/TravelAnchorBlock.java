@@ -20,6 +20,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -103,6 +104,7 @@ public class TravelAnchorBlock extends MenuBlockBE<TravelAnchorTile, TravelAncho
     @Override
     public void appendHoverText(@NotNull ItemStack stack, Item.@NotNull TooltipContext context, List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
         tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_anchor_block").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_anchor_block_secondary").withStyle(ChatFormatting.GRAY));
     }
 
     @Override
@@ -115,24 +117,18 @@ public class TravelAnchorBlock extends MenuBlockBE<TravelAnchorTile, TravelAncho
     ) {
         BlockEntity be = level.getBlockEntity(pos);
 
-        if (be instanceof TravelAnchorTile anchor) {
-            if (anchor.isLocked()) {
-                if (player.isShiftKeyDown()) {
-                    if (!level.isClientSide) {
-                        anchor.setLocked(false);
-                        player.displayClientMessage(Component.translatable("travelanchors.lock.unlocked"), true);
-                    }
-                } else {
-                    if (!level.isClientSide && !TeleportHandler.canPlayerTeleportAnyHand(player)) {
-                        player.displayClientMessage(Component.translatable("travelanchors.lock.interact"), true);
-                    }
-                }
-            } else {
-                return super.useWithoutItem(state, level, pos, player, hit);
-            }
+        if (
+                be instanceof TravelAnchorTile anchor
+                        && anchor.isLocked()
+                        && player.isShiftKeyDown()
+                        && !level.isClientSide
+        ) {
+            anchor.setLocked(false);
+            player.displayClientMessage(Component.translatable("travelanchors.lock.unlocked"), true);
+            return InteractionResult.PASS;
         }
 
-        return InteractionResult.PASS;
+        return super.useWithoutItem(state, level, pos, player, hit);
     }
 
     @Override
@@ -149,6 +145,12 @@ public class TravelAnchorBlock extends MenuBlockBE<TravelAnchorTile, TravelAncho
         if (be instanceof TravelAnchorTile anchor) {
             if (!stack.isEmpty() && stack.getItem() instanceof BlockItem blockItem) {
                 if (!level.isClientSide) {
+
+                    if (!isValidStateForMimic(blockItem.getBlock(), level, pos)) {
+                        player.displayClientMessage(Component.translatable("travelanchors.mimic.cant_use"), true);
+                        return ItemInteractionResult.SUCCESS;
+                    }
+
                     BlockState mimicState = blockItem.getBlock().getStateForPlacement(
                             new BlockPlaceContext(
                                     player,
@@ -158,9 +160,9 @@ public class TravelAnchorBlock extends MenuBlockBE<TravelAnchorTile, TravelAncho
                             )
                     );
 
-                    if(mimicState == null || mimicState.getBlock() == this){
+                    if (mimicState == null || mimicState.getBlock() == this) {
                         anchor.setMimic(null);
-                    }else{
+                    } else {
                         anchor.setMimic(mimicState);
                     }
                     player.playNotifySound(SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1F, 1F);
@@ -183,5 +185,27 @@ public class TravelAnchorBlock extends MenuBlockBE<TravelAnchorTile, TravelAncho
     @Override
     protected @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
         return RenderShape.ENTITYBLOCK_ANIMATED;
+    }
+
+    private boolean isValidStateForMimic(Block block, Level level, BlockPos pos) {
+        if (block == this) {
+            return true;
+        }
+
+        BlockState state = block.defaultBlockState();
+
+        if (state.getRenderShape() != RenderShape.MODEL) {
+            return false;
+        }
+
+        if (state.getCollisionShape(level, pos).isEmpty()) {
+            return false;
+        }
+
+        if (state.getShape(level, pos) != Shapes.block()) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -9,18 +9,21 @@
   "enchantment.travelanchors.teleportation_range.desc": "Increases the teleportation range with each tier",
 
   "screen.travelanchors.travel_anchor": "Travel Anchor",
-  "screen.travelanchors.search": "Search",
-  "screen.travelanchors.nameless": "Enter a name to use it",
+  "screen.travelanchors.nameless": "Enter a name to use it at distance",
 
-  "tooltip.travelanchors.travel_anchor_block": "To teleport look at it while standing on another anchor or holding a Travel Staff",
-  "tooltip.travelanchors.travel_staff": "Sneak + Right-Click to short range Teleport. Look at Travel Anchor to warp",
+  "tooltip.travelanchors.travel_anchor_block": "To teleport look at it while standing on another anchor",
+  "tooltip.travelanchors.travel_anchor_block_secondary": "Also, you can teleport to it by holding Travel Staff",
+
+  "tooltip.travelanchors.travel_staff": "Look at Travel Anchor to warp",
+  "tooltip.travelanchors.travel_staff_secondary": "Shift + Right-Click to short range Teleport",
 
   "travelanchors.tp.success": "Teleported to %s",
   "travelanchors.tp.fail": "No travel anchor found",
   "travelanchors.hop.fail": "Destination obstructed",
 
-  "travelanchors.lock.button": "Lock",
-  "travelanchors.lock.locked": "This anchor is now locked",
+  "travelanchors.save.button": "Save",
+  "travelanchors.lock.locked": "This anchor is now locked. Use Shift + Right-Click with empty hand to unlock",
   "travelanchors.lock.unlocked": "This anchor is no longer locked",
-  "travelanchors.lock.interact": "This anchor is locked. Shift right-click with empty hand to unlock"
+
+  "travelanchors.mimic.cant_use": "This block can't be used as mimic for anchor"
 }

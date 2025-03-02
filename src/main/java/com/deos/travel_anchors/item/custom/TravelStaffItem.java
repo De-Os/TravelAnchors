@@ -14,6 +14,7 @@ public class TravelStaffItem extends ItemBase {
 
     public TravelStaffItem(ModX mod, Properties properties) {
         super(mod, properties);
+
     }
 
     @Override
@@ -24,6 +25,7 @@ public class TravelStaffItem extends ItemBase {
             @NotNull TooltipFlag tooltipFlag
     ) {
         tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_staff").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_staff_secondary").withStyle(ChatFormatting.GRAY));
     }
 
     @Override
