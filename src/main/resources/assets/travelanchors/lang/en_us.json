@@ -9,7 +9,6 @@
   "enchantment.travelanchors.teleportation_range.desc": "Increases the teleportation range with each tier",
 
   "screen.travelanchors.travel_anchor": "Travel Anchor",
-  "screen.travelanchors.nameless": "Enter a name to use it at distance",
 
   "tooltip.travelanchors.travel_anchor_block": "To teleport look at it while standing on another anchor",
   "tooltip.travelanchors.travel_anchor_block_secondary": "Also, you can teleport to it by holding Travel Staff",

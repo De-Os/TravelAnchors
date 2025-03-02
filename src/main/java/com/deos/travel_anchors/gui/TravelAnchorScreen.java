@@ -34,7 +34,7 @@ public class TravelAnchorScreen extends AbstractContainerScreen<TravelAnchorMenu
     public void init() {
         super.init();
         this.textFieldWidget = new EditBox(this.font, this.width / 2 - 72, this.height / 2 - 63, 100, 16, Component.empty());
-        this.textFieldWidget.setMaxLength(32767);
+        this.textFieldWidget.setMaxLength(128);
         this.textFieldWidget.setFocused(true);
         if(this.menu.getBlockEntity() != null){
             this.textFieldWidget.setValue(this.menu.getBlockEntity().getName());
@@ -80,8 +80,7 @@ public class TravelAnchorScreen extends AbstractContainerScreen<TravelAnchorMenu
         );
         boolean empty = this.textFieldWidget.getValue().trim().isEmpty();
         graphics.drawString(this.font,
-                empty ? Component.translatable("screen.travelanchors.nameless").getString()
-                        : this.playerInventoryTitle.getString(),
+                this.playerInventoryTitle.getString(),
                 8,
                 this.imageHeight - 126,
                 empty ? COLOR_RED : COLOR_GRAY,

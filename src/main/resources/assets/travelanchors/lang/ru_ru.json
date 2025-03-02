@@ -9,7 +9,6 @@
   "enchantment.travelanchors.teleportation_range.desc": "Увеличивает дальность телепортации с каждым уровнем",
 
   "screen.travelanchors.travel_anchor": "Якорь Путешествия",
-  "screen.travelanchors.nameless": "Дайте название, чтобы использовать дистанционно",
 
   "tooltip.travelanchors.travel_anchor_block": "Чтобы телепортироваться, наведитесь на него, пока стоите на другом якоре",
   "tooltip.travelanchors.travel_anchor_block_secondary": "Так же, вы можете держать Посох Путешествия для телепортации",

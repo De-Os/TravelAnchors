@@ -1,6 +1,5 @@
 package com.deos.travel_anchors.block.custom;
 
-import com.deos.travel_anchors.TeleportHandler;
 import com.deos.travel_anchors.TravelAnchorList;
 import com.deos.travel_anchors.TravelAnchors;
 import com.deos.travel_anchors.block.ModBlocks;
@@ -102,9 +101,15 @@ public class TravelAnchorBlock extends MenuBlockBE<TravelAnchorTile, TravelAncho
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, Item.@NotNull TooltipContext context, List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
+    public void appendHoverText(
+            @NotNull ItemStack stack,
+            Item.@NotNull TooltipContext context,
+            List<Component> tooltipComponents,
+            @NotNull TooltipFlag tooltipFlag
+    ) {
         tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_anchor_block").withStyle(ChatFormatting.GRAY));
         tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_anchor_block_secondary").withStyle(ChatFormatting.GRAY));
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
     @Override

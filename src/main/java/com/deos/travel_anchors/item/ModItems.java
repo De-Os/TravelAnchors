@@ -12,6 +12,5 @@ public class ModItems {
             TravelAnchors.getInstance(),
             new Item.Properties()
                     .stacksTo(1)
-
     );
 }

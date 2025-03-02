@@ -26,15 +26,16 @@ public class TravelStaffItem extends ItemBase {
     ) {
         tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_staff").withStyle(ChatFormatting.GRAY));
         tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_staff_secondary").withStyle(ChatFormatting.GRAY));
-    }
-
-    @Override
-    public int getEnchantmentValue(@NotNull ItemStack stack) {
-        return 20;
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
     @Override
     public boolean isEnchantable(@NotNull ItemStack stack) {
         return true;
+    }
+
+    @Override
+    public int getEnchantmentValue(@NotNull ItemStack stack) {
+        return 15;
     }
 }
