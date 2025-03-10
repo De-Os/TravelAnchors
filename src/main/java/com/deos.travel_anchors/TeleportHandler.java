@@ -14,6 +14,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
@@ -118,9 +119,20 @@ public class TeleportHandler {
     }
 
     public static boolean canTeleportTo(BlockGetter level, BlockPos target) {
-        return !level.getBlockState(target.immutable().above(1)).canOcclude()
-                && !level.getBlockState(target.immutable().above(2)).canOcclude()
-                && target.getY() >= level.getMinBuildHeight();
+        BlockState firstAboveBlockState = level.getBlockState(target.immutable().above(1));
+        BlockState secondAboveBlockState = level.getBlockState(target.immutable().above(2));
+
+        return (
+                !firstAboveBlockState.isSolidRender(level, target)
+                        &&
+                        !secondAboveBlockState.isSolidRender(level, target)
+                        &&
+                        !firstAboveBlockState.canOcclude()
+                        &&
+                        !secondAboveBlockState.canOcclude()
+                        &&
+                        target.getY() >= level.getMinBuildHeight()
+        );
     }
 
     public static boolean canPlayerTeleportAnyHand(Player player) {
