@@ -1,8 +1,10 @@
 package com.deos.travel_anchors.config;
 
+import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.moddingx.libx.annotation.config.RegisterConfig;
 import org.moddingx.libx.config.validate.DoubleRange;
+import org.moddingx.libx.config.validate.IntRange;
 
 @RegisterConfig("common")
 public class Config
@@ -22,6 +24,10 @@ public class Config
     @org.moddingx.libx.config.Config("The maximum distance you can short-range teleport with shift-click.")
     @DoubleRange(min = 2, max = 15)
     public static double max_short_tp_distance = 7;
+
+    @org.moddingx.libx.config.Config("Short teleport delay, ticks")
+    @IntRange(min = 0)
+    public static int short_tp_delay_ticks = 30;
 
     @org.moddingx.libx.config.Config({
             "Fire an EntityTeleportEvent before allowing the teleport.",

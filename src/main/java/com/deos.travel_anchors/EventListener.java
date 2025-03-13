@@ -1,6 +1,7 @@
 package com.deos.travel_anchors;
 
 import com.deos.travel_anchors.config.ClientConfig;
+import com.deos.travel_anchors.config.Config;
 import com.deos.travel_anchors.network.ClientEventMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
@@ -37,7 +38,7 @@ public class EventListener {
                 if (TeleportHandler.shortTeleport(level, player, event.getHand())) {
                     event.setCanceled(true);
                     event.setCancellationResult(InteractionResult.sidedSuccess(event.getLevel().isClientSide));
-                    player.getCooldowns().addCooldown(event.getItemStack().getItem(), 30);
+                    player.getCooldowns().addCooldown(event.getItemStack().getItem(), Config.short_tp_delay_ticks);
                 }
             } else {
                 if (TeleportHandler.anchorTeleport(level, player, player.blockPosition().immutable().below(), event.getHand())) {

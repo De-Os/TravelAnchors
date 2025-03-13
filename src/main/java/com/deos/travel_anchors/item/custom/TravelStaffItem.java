@@ -14,6 +14,7 @@ public class TravelStaffItem extends ItemBase {
 
     public TravelStaffItem(ModX mod, Properties properties) {
         super(mod, properties);
+
     }
 
     @Override
@@ -24,15 +25,17 @@ public class TravelStaffItem extends ItemBase {
             @NotNull TooltipFlag tooltipFlag
     ) {
         tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_staff").withStyle(ChatFormatting.GRAY));
-    }
-
-    @Override
-    public int getEnchantmentValue(@NotNull ItemStack stack) {
-        return 20;
+        tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_staff_secondary").withStyle(ChatFormatting.GRAY));
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
     @Override
     public boolean isEnchantable(@NotNull ItemStack stack) {
         return true;
+    }
+
+    @Override
+    public int getEnchantmentValue(@NotNull ItemStack stack) {
+        return 15;
     }
 }

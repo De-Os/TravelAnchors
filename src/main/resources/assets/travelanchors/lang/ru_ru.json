@@ -1,26 +1,28 @@
 {
   "itemGroup.travelanchors": "Travel Anchors",
 
-  "item.travelanchors.travel_staff": "Посох путешествия",
+  "item.travelanchors.travel_staff": "Посох Путешествия",
 
-  "block.travelanchors.travel_anchor": "Якорь путешествия",
+  "block.travelanchors.travel_anchor": "Якорь Путешествия",
 
-  "enchantment.travelanchors.teleportation_range": "Радиус Телепортации",
+  "enchantment.travelanchors.teleportation_range": "Дальность Телепортации",
   "enchantment.travelanchors.teleportation_range.desc": "Увеличивает дальность телепортации с каждым уровнем",
 
-  "screen.travelanchors.travel_anchor": "Якорь путешествия",
-  "screen.travelanchors.search": "Найти",
-  "screen.travelanchors.nameless": "Чтобы использовать это, дайте ему название",
+  "screen.travelanchors.travel_anchor": "Якорь Путешествия",
 
-  "tooltip.travelanchors.travel_anchor_block": "Чтобы телепортироваться, наведитесь на него, пока стоите на другом якоре или держите в руках Посох Путешествия",
-  "tooltip.travelanchors.travel_staff": "Shift + ПКМ для телепортации на короткое расстояние. Наведитесь на якорь путешествия чтобы телепортироваться на него",
+  "tooltip.travelanchors.travel_anchor_block": "Чтобы телепортироваться, наведитесь на него, пока стоите на другом якоре",
+  "tooltip.travelanchors.travel_anchor_block_secondary": "Так же, вы можете держать Посох Путешествия для телепортации",
 
-  "travelanchors.tp.success": "Телепортировано на %s",
-  "travelanchors.tp.fail": "Якорь путешествия не найден",
+  "tooltip.travelanchors.travel_staff": "Посмотрите на Якорь Телепортации для телепорта",
+  "tooltip.travelanchors.travel_staff_secondary": "Shift + ПКМ для телепорта на короткую дистанцию",
+
+  "travelanchors.tp.success": "Телепортировались на %s",
+  "travelanchors.tp.fail": "Якорь телепортации не найден",
   "travelanchors.hop.fail": "Доступ к цели затруднен",
-  
-  "travelanchors.lock.button": "Заблокировать",
-  "travelanchors.lock.locked": "Этот якорь теперь заблокирован",
-  "travelanchors.lock.unlocked": "Этот якорь больше не заблокирован",
-  "travelanchors.lock.interact": "Этот якорь заблокирован. Нажмите ПКМ с шифтом, чтобы разблокировать"
+
+  "travelanchors.save.button": "Ок",
+  "travelanchors.lock.locked": "Этот якорь теперь заблокирован. Используйте Shift + ПКМ с пустой рукой для разблокировки",
+  "travelanchors.lock.unlocked": "Якорь телепортации разблокирован",
+
+  "travelanchors.mimic.cant_use": "Этот блок не может быть использован в качестве облика для якоря телепортации"
 }

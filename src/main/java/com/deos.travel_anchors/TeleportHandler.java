@@ -58,6 +58,7 @@ public class TeleportHandler {
     }
 
     public static boolean teleportPlayer(Player player, @Nullable Pair<BlockPos, String> anchor, @Nullable InteractionHand hand) {
+        System.out.println(anchor);
         if (anchor != null) {
             if (!player.level().isClientSide) {
                 Vec3 teleportVec = checkTeleport(player, anchor.getLeft().above());
@@ -71,7 +72,7 @@ public class TeleportHandler {
                 player.swing(hand, true);
             }
             player.playNotifySound(SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1F, 1F);
-            if (!player.level().isClientSide) {
+            if (!player.level().isClientSide && anchor.getRight() != null && !anchor.getRight().isEmpty()) {
                 player.displayClientMessage(Component.translatable("travelanchors.tp.success", anchor.getRight()), true);
             }
             return true;
@@ -117,9 +118,20 @@ public class TeleportHandler {
     }
 
     public static boolean canTeleportTo(BlockGetter level, BlockPos target) {
-        return !level.getBlockState(target.immutable().above(1)).canOcclude()
-                && !level.getBlockState(target.immutable().above(2)).canOcclude()
-                && target.getY() >= level.getMinBuildHeight();
+        BlockState firstAboveBlockState = level.getBlockState(target.immutable().above(1));
+        BlockState secondAboveBlockState = level.getBlockState(target.immutable().above(2));
+
+        return (
+                !firstAboveBlockState.isSolidRender(level, target)
+                        &&
+                        !secondAboveBlockState.isSolidRender(level, target)
+                        &&
+                        !firstAboveBlockState.canOcclude()
+                        &&
+                        !secondAboveBlockState.canOcclude()
+                        &&
+                        target.getY() >= level.getMinBuildHeight()
+        );
     }
 
     public static boolean canPlayerTeleportAnyHand(Player player) {
@@ -172,9 +184,7 @@ public class TeleportHandler {
         if (state.getBlock() == ModBlocks.travelAnchor && canTeleportTo(level, searchPos)) {
             BlockPos target = searchPos.immutable();
             String name = ModBlocks.travelAnchor.getBlockEntity(level, target).getName();
-            if (!name.isEmpty()) {
-                anchor = Pair.of(target, name);
-            }
+            anchor = Pair.of(target, name.isEmpty() ? null : name);
         }
         return teleportPlayer(player, anchor, null);
     }
@@ -193,25 +203,23 @@ public class TeleportHandler {
         if (state.getBlock() == ModBlocks.travelAnchor && canTeleportTo(level, searchPos)) {
             BlockPos target = searchPos.immutable();
             String name = ModBlocks.travelAnchor.getBlockEntity(level, target).getName();
-            if (!name.isEmpty()) {
-                anchor = Pair.of(target, name);
-            }
+            anchor = Pair.of(target, name.isEmpty() ? null : name);
         }
         return teleportPlayer(player, anchor, null);
     }
 
     @Nullable
     private static Vec3 checkTeleport(Player player, BlockPos target) {
-        if (Config.fireTeleportEvent) {
-            EntityTeleportEvent event = new EntityTeleportEvent(player, target.getX() + 0.5, target.getY(), target.getZ() + 0.5);
-
-            if(NeoForge.EVENT_BUS.post(event).isCanceled()){
-                return null;
-            }
-
-            return new Vec3(event.getTargetX(), event.getTargetY(), event.getTargetZ());
-        } else {
+        if (!Config.fireTeleportEvent) {
             return new Vec3(target.getX() + 0.5, target.getY(), target.getZ() + 0.5);
         }
+
+        EntityTeleportEvent event = new EntityTeleportEvent(player, target.getX() + 0.5, target.getY(), target.getZ() + 0.5);
+
+        if (NeoForge.EVENT_BUS.post(event).isCanceled()) {
+            return null;
+        }
+
+        return new Vec3(event.getTargetX(), event.getTargetY(), event.getTargetZ());
     }
 }
