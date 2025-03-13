@@ -12,9 +12,9 @@ Port of [Travel Anchors](https://www.curseforge.com/minecraft/mc-mods/travel-anc
 Craft -> place -> give it a name -> lock -> use!
 
 Actions:
-* Right-click with empty hand: opens GUI with name change and lock button
-* Shift+Right-click with empty hand: unlocks
 * Right-click with block: set block's texture for anchor
+* Right-click: opens GUI with name change
+* Shift+Right-click with empty hand: unlocks
 * When standing on anchor, explore nearby anchors and teleport on them by just right-click. Jump and shift also supported for elevator purposes
 
 ### Travel Staff
@@ -30,7 +30,7 @@ New enchantment, only for Travel Staff. Increases range for travel anchors visib
 
 ## Known issues
 * Lightning
-* Ability to set non-full blocks as texture for anchor
+* ~~Ability to set non-full blocks as texture for anchor~~ *fixed in 1.1.0*
 * ??? Feel free to report!
 
 ## Credits
