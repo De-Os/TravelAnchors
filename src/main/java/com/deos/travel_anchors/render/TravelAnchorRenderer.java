@@ -98,6 +98,10 @@ public class TravelAnchorRenderer {
                 continue;
             }
 
+            if(!TeleportHandler.canTeleportTo(level, pos)){
+                continue;
+            }
+
             int light;
             if (level.hasChunkAt(pos)) {
                 light = LightTexture.pack(level.getBrightness(LightLayer.BLOCK, pos), level.getBrightness(LightLayer.SKY, pos));
@@ -105,7 +109,7 @@ public class TravelAnchorRenderer {
                 light = LightTexture.FULL_BLOCK;
             }
 
-            boolean active = anchor != null && pos.equals(anchor.getLeft());
+            boolean active = pos.equals(anchor.getLeft());
             boolean directText = distanceSq <= 50 * 50;
 
             poseStack.pushPose();
