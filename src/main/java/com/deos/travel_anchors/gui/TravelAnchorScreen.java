@@ -40,7 +40,7 @@ public class TravelAnchorScreen extends AbstractContainerScreen<TravelAnchorMenu
             this.textFieldWidget.setValue(this.menu.getBlockEntity().getName());
         }
 
-        this.saveButton = Button.builder(Component.translatable("travelanchors.save.button"), btn -> {
+        this.saveButton = Button.builder(LangHolder.GUI_BUTTON_SAVE_LABEL.getComponent(), btn -> {
             TravelAnchors.getNetwork().sendLock(this.menu.getLevel(), this.menu.getPos());
             this.onClose();
         }).bounds(this.width / 2 + 33, this.height / 2 - 65, 44, 20).build();

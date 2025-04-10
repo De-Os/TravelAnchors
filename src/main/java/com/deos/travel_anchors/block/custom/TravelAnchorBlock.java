@@ -3,6 +3,7 @@ package com.deos.travel_anchors.block.custom;
 import com.deos.travel_anchors.TravelAnchorList;
 import com.deos.travel_anchors.TravelAnchors;
 import com.deos.travel_anchors.block.ModBlocks;
+import com.deos.travel_anchors.gui.LangHolder;
 import com.deos.travel_anchors.gui.TravelAnchorMenu;
 import com.deos.travel_anchors.gui.TravelAnchorMenuFactory;
 import net.minecraft.ChatFormatting;
@@ -107,8 +108,8 @@ public class TravelAnchorBlock extends MenuBlockBE<TravelAnchorTile, TravelAncho
             List<Component> tooltipComponents,
             @NotNull TooltipFlag tooltipFlag
     ) {
-        tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_anchor_block").withStyle(ChatFormatting.GRAY));
-        tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_anchor_block_secondary").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(LangHolder.BLOCKS_TRAVEL_ANCHOR_TOOLTIP.getComponent().withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(LangHolder.BLOCKS_TRAVEL_ANCHOR_TOOLTIP_SECONDARY.getComponent().withStyle(ChatFormatting.GRAY));
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
@@ -129,7 +130,7 @@ public class TravelAnchorBlock extends MenuBlockBE<TravelAnchorTile, TravelAncho
                         && !level.isClientSide
         ) {
             anchor.setLocked(false);
-            player.displayClientMessage(Component.translatable("travelanchors.lock.unlocked"), true);
+            player.displayClientMessage(LangHolder.MESSAGES_ANCHOR_UNLOCKED.getComponent(), true);
             return InteractionResult.PASS;
         }
 
@@ -152,7 +153,7 @@ public class TravelAnchorBlock extends MenuBlockBE<TravelAnchorTile, TravelAncho
                 if (!level.isClientSide) {
 
                     if (!isValidStateForMimic(blockItem.getBlock(), level, pos)) {
-                        player.displayClientMessage(Component.translatable("travelanchors.mimic.cant_use"), true);
+                        player.displayClientMessage(LangHolder.MESSAGES_CANT_USE_AS_MIMIC.getComponent(), true);
                         return ItemInteractionResult.SUCCESS;
                     }
 
