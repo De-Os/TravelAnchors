@@ -29,8 +29,8 @@ Actions:
 New enchantment, only for Travel Staff. Increases range for travel anchors visibility
 
 ## Known issues
-* Lightning
 * ~~Ability to set non-full blocks as texture for anchor~~ *fixed in 1.1.0*
+* ~~Lightning and translucent blocks as mimic~~ *fixed in 1.1.1*
 * ??? Feel free to report!
 
 ## Credits

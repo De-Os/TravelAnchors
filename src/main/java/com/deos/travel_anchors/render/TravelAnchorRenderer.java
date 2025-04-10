@@ -167,7 +167,7 @@ public class TravelAnchorRenderer {
                     light,
                     OverlayTexture.NO_OVERLAY,
                     modelData == null ? ModelData.EMPTY : modelData,
-                    RenderType.SOLID
+                    RenderType.TRANSLUCENT
             );
         }
 

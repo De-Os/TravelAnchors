@@ -3,6 +3,7 @@ package com.deos.travel_anchors;
 import com.deos.travel_anchors.block.ModBlocks;
 import com.deos.travel_anchors.config.Config;
 import com.deos.travel_anchors.enchantment.ModEnchantments;
+import com.deos.travel_anchors.gui.LangHolder;
 import com.deos.travel_anchors.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -58,7 +59,6 @@ public class TeleportHandler {
     }
 
     public static boolean teleportPlayer(Player player, @Nullable Pair<BlockPos, String> anchor, @Nullable InteractionHand hand) {
-        System.out.println(anchor);
         if (anchor != null) {
             if (!player.level().isClientSide) {
                 Vec3 teleportVec = checkTeleport(player, anchor.getLeft().above());
@@ -73,12 +73,12 @@ public class TeleportHandler {
             }
             player.playNotifySound(SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1F, 1F);
             if (!player.level().isClientSide && anchor.getRight() != null && !anchor.getRight().isEmpty()) {
-                player.displayClientMessage(Component.translatable("travelanchors.tp.success", anchor.getRight()), true);
+                player.displayClientMessage(LangHolder.MESSAGES_TP_SUCCESS.getComponent(anchor.getRight()), true);
             }
             return true;
         } else {
             if (!player.level().isClientSide) {
-                player.displayClientMessage(Component.translatable("travelanchors.tp.fail"), true);
+                player.displayClientMessage(LangHolder.MESSAGES_TP_FAIL.getComponent(), true);
             }
             return false;
         }
@@ -111,7 +111,7 @@ public class TeleportHandler {
             return true;
         } else {
             if (!player.level().isClientSide) {
-                player.displayClientMessage(Component.translatable("travelanchors.hop.fail"), true);
+                player.displayClientMessage(LangHolder.MESSAGES_HOP_FAIL.getComponent(), true);
             }
             return false;
         }

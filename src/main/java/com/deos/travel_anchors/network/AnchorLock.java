@@ -2,6 +2,7 @@ package com.deos.travel_anchors.network;
 
 import com.deos.travel_anchors.TravelAnchors;
 import com.deos.travel_anchors.block.custom.TravelAnchorTile;
+import com.deos.travel_anchors.gui.LangHolder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -39,7 +40,7 @@ public record AnchorLock(
                 BlockEntity be = sl.getBlockEntity(this.pos);
                 if (be instanceof TravelAnchorTile tatile) {
                     tatile.setLocked(true);
-                    player.displayClientMessage(Component.translatable("travelanchors.lock.locked"), true);
+                    player.displayClientMessage(LangHolder.MESSAGES_ANCHOR_LOCKED.getComponent(), true);
                     tatile.setChanged();
                 }
             }

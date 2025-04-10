@@ -1,5 +1,6 @@
 package com.deos.travel_anchors.item.custom;
 
+import com.deos.travel_anchors.gui.LangHolder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -24,8 +25,8 @@ public class TravelStaffItem extends ItemBase {
             List<Component> tooltipComponents,
             @NotNull TooltipFlag tooltipFlag
     ) {
-        tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_staff").withStyle(ChatFormatting.GRAY));
-        tooltipComponents.add(Component.translatable("tooltip.travelanchors.travel_staff_secondary").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(LangHolder.ITEMS_TRAVEL_STAFF_TOOLTIP.getComponent().withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(LangHolder.ITEMS_TRAVEL_STAFF_TOOLTIP_SECONDARY.getComponent().withStyle(ChatFormatting.GRAY));
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
