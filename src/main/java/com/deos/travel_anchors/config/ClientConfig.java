@@ -17,4 +17,14 @@ public class ClientConfig {
             "This is a client option so each player can adjust it as they prefer."
     })
     public static boolean disable_elevation = false;
+
+    @Config({
+            "The distance at which travel anchors will hide their names."
+    })
+    public static int hide_name_distance = 50;
+
+    @Config({
+            "The distance at which travel anchors be enlarged in your view."
+    })
+    public static int enlarge_distance = 50;
 }

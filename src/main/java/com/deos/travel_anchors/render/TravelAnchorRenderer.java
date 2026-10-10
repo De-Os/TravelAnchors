@@ -4,6 +4,7 @@ import com.deos.travel_anchors.TeleportHandler;
 import com.deos.travel_anchors.TravelAnchorList;
 import com.deos.travel_anchors.TravelAnchors;
 import com.deos.travel_anchors.block.ModBlocks;
+import com.deos.travel_anchors.config.ClientConfig;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexFormat;
@@ -110,12 +111,12 @@ public class TravelAnchorRenderer {
             }
 
             boolean active = pos.equals(anchor.getLeft());
-            boolean directText = distanceSq <= 50 * 50;
+            boolean directText = distanceSq <= ClientConfig.hide_name_distance * ClientConfig.hide_name_distance;
 
             poseStack.pushPose();
             RenderHelperLevel.loadCameraPosition(event.getCamera(), poseStack, pos);
 
-            if (distanceSq > 50 * 50) {
+            if (distanceSq > ClientConfig.enlarge_distance * ClientConfig.enlarge_distance) {
                 double distance = Math.sqrt(distanceSq);
                 poseStack.translate(0.5, 0.5, 0.5);
 
@@ -209,6 +210,9 @@ public class TravelAnchorRenderer {
         doubleScale *= (Math.sin(Math.toRadians(Minecraft.getInstance().options.fov().get()) / 4d));
         if (active) {
             doubleScale *= 1.3;
+        }
+        if (distanceSq > ClientConfig.enlarge_distance * ClientConfig.enlarge_distance) {
+            doubleScale /= 2f;
         }
         float scale = (float) doubleScale;
 
